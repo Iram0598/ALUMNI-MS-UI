@@ -1,5 +1,6 @@
-import { Card, Form, Button, FormGroup } from "react-bootstrap";
+import { Card, Form, Button } from "react-bootstrap";
 import { useState } from "react";
+import Link from "next/link";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {
@@ -32,9 +33,11 @@ export default function Home() {
                 </Form.Group>
                 <div className="d-flex justify-content-between">
                   <div>
+                    <Link href="/dashboard">
                     <Button variant="primary" type="submit">
                       Login
                     </Button>
+                    </Link>
                   </div>
                   <div>
                     <Button onClick={() => setshowlogin(false)}>
@@ -80,9 +83,7 @@ export default function Home() {
                 </Form.Group>
                 <div className="d-flex justify-content-between">
                   <div>
-                    <Button variant="primary">
-                      Register
-                    </Button>
+                    <Button variant="primary">Register</Button>
                   </div>
                   <div className="ms-5">
                     Have an account? Then
