@@ -59,10 +59,12 @@ export default function Sidebar() {
             </Accordion.Header>
             <Accordion.Body className="p-0">
               <ListGroup className="rounded-0">
-                <ListGroup.Item action href="/profile">
+                <Link href="/profile">
+                <ListGroup.Item action >
                   <AiTwotoneEdit className="me-3" />
                   Edit profile
                 </ListGroup.Item>
+                </Link>
                 <ListGroup.Item action href="#link2">
                   <MdReadMore className="me-3" />
                   More features

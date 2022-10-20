@@ -13,8 +13,10 @@ import { FaExchangeAlt } from "react-icons/fa";
 
 export default function TopNavigation() {
   return (
+  
     <div>
-      <Card className="mt-0 ms-0" style={{ backgroundColor: "rgb(0, 0, 0)", height: "5vh", paddingTop:"13px" }}>
+  
+      <Card className="card" style={{ backgroundColor: "rgb(0, 0, 0)", height: "5vh", paddingTop:"13px" }}>
         <Navbar className="h-25">
           
             <Navbar.Brand
