@@ -3,6 +3,7 @@ import Sidebar from '../components/layout/Sidebar';
 
 import { Container, Row, Col, Image, Badge } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import TopNavigation from '../components/layout/TopNavigation';
 
 
 
@@ -17,7 +18,7 @@ export default function Dashboard () {
             <Sidebar/>
           </Col>
           <Col sm={10}>
-            Hello
+            <TopNavigation/>
           </Col>
         </Row>
       </Container>

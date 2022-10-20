@@ -9,39 +9,48 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import { IoSettings } from "react-icons/io";
 import { Accordion } from "react-bootstrap";
 import { RiAccountCircleFill } from "react-icons/ri";
+import Link from "next/link";
 
 export default function Sidebar() {
   return (
     <div>
       <div className="text-white d-flex mt-2">
         <AiFillHome className="h2" />
-        <a className="text-decoration-none text-white h3 ms-2" href="/dashboard">Dashboard</a>
+        <Link href="/dashboard">
+        <a
+          className="text-decoration-none text-white h3 ms-2"
+          
+        >
+          Dashboard
+        </a>
+        </Link>
       </div>
       <div className="list-group links mt-5 ms-0 rounded-0 ">
+        <Link href="/alumni">
+          <a className=" d-flex justify-content-between list-group-item list-group-item-action mb-3 links">
+            {" "}
+            <div>
+              <GoOrganization className="me-3" />
+              Alumni{" "}
+            </div>
+            <Badge pill className="ms-4" bg="danger">
+              New
+            </Badge>
+          </a>
+        </Link>
+        <Link href="/events">
         <a
-          href="/"
-          className=" d-flex justify-content-between list-group-item list-group-item-action mb-3 links"
-        >
-          {" "}
-          <div>
-          <GoOrganization className="me-3" />
-          Alumni{" "}
-          </div>
-          <Badge pill className="ms-4" bg="danger">
-            New
-          </Badge>
-        </a>
-        <a
-          href="/events"
+          
           className="d-flex justify-content-between list-group-item list-group-item-action mb-3 links "
         >
           {" "}
           <div>
-          <MdCelebration className="me-3" />
-           Events 
-           </div>
+            <MdCelebration className="me-3" />
+            Events
+          </div>
           <Badge className="ms-5">+2</Badge>
         </a>
+        </Link>
         <Accordion defaultActiveKey="0">
           <Accordion.Item className="rounded-0" eventKey="0">
             <Accordion.Header>
@@ -49,12 +58,14 @@ export default function Sidebar() {
               Profile settings
             </Accordion.Header>
             <Accordion.Body className="p-0">
-              <ListGroup className="rounded-0" >
+              <ListGroup className="rounded-0">
                 <ListGroup.Item action href="/profile">
-                  <AiTwotoneEdit className="me-3"/>Edit profile
+                  <AiTwotoneEdit className="me-3" />
+                  Edit profile
                 </ListGroup.Item>
-                <ListGroup.Item action href="#link2" >
-                  <MdReadMore className="me-3" />More features
+                <ListGroup.Item action href="#link2">
+                  <MdReadMore className="me-3" />
+                  More features
                 </ListGroup.Item>
               </ListGroup>
             </Accordion.Body>
