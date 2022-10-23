@@ -16,7 +16,7 @@ export default function TopNavigation() {
   
     <div>
   
-      <Card className="card" style={{ backgroundColor: "rgb(0, 0, 0)", height: "5vh", paddingTop:"13px" }}>
+      <Card className="mt-2" style={{ backgroundColor: "rgb(0, 0, 0)", height: "5vh", paddingTop:"13px" }}>
         <Navbar className="h-25">
           
             <Navbar.Brand

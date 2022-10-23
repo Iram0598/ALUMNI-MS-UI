@@ -3,14 +3,16 @@ import { useState } from "react";
 import Link from "next/link";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
 export default function Home() {
   const [showlogin, setshowlogin] = useState(true);
 
   return (
     <>
-      <title>IUBAT-ACMS</title>
+      
       {showlogin ? (
         <div className="d-flex align-items-center justify-content-center min-vh-100 me-3">
+         
           <Card>
             <Card.Body>
               <Form>

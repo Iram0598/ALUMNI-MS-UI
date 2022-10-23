@@ -1,12 +1,9 @@
 import React from "react";
-import { Container, Row, Col, Image, Badge, ListGroup } from "react-bootstrap";
+import {  Badge, ListGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AiFillHome, AiTwotoneEdit } from "react-icons/ai";
 import { GoOrganization } from "react-icons/go";
 import { MdCelebration, MdReadMore } from "react-icons/md";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import { IoSettings } from "react-icons/io";
 import { Accordion } from "react-bootstrap";
 import { RiAccountCircleFill } from "react-icons/ri";
 import Link from "next/link";
@@ -62,7 +59,7 @@ export default function Sidebar() {
                 <Link href="/profile">
                 <ListGroup.Item action >
                   <AiTwotoneEdit className="me-3" />
-                  Edit profile
+                  Your profile
                 </ListGroup.Item>
                 </Link>
                 <ListGroup.Item action href="#link2">
