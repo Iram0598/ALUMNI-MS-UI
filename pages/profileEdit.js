@@ -4,8 +4,8 @@ import Image from "next/future/image";
 import dummyImage from "../public/user-image-png.png";
 import { useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+
+
 import {
   Container,
   Row,
@@ -32,7 +32,7 @@ export default function profileEdit() {
             <Col sm={10}>
               <TopNavigation />
               <Card>
-                <div className="d-block">
+                <div className="d-flex">
                   <Image
                     className="ms-5 mt-3 fluid"
                     sizes="15vw"
@@ -41,12 +41,18 @@ export default function profileEdit() {
                     width={350}
                     height={300}
                   ></Image>
-                </div>
-                <div>
+                  <div style={{marginTop: "280px"}}>
                   <Form.Group controlId="formFileSm" className="mb-3 ms-5 w-25">
                     <Form.Control type="file" size="sm" />
                   </Form.Group>
                 </div>
+                </div>
+                <div> 
+                  <h4 className="ms-5 mt-3">
+                    Mustafa Iram Udoy
+                  </h4>
+                </div>
+                
                 <div className="ms-5 mb-4 mt-3 fonts">
                   <h1 className="border-bottom border-dark">
                     Basic Informations
@@ -105,7 +111,7 @@ export default function profileEdit() {
                     <h5 style={{marginTop: "1px"}}>Company/Organization:</h5>
                     <h5 style={{marginTop: "33px"}}>Department:</h5>
                     <h5 style={{marginTop: "22px"}}>Designation:</h5>
-                    <h5 style={{marginTop: "31px"}} >Organization type:</h5>
+                    <h5 style={{marginTop: "40px"}} >Organization type:</h5>
                     <h5 style={{marginTop: "25px"}}>Joining date:</h5>
                     <h5>Organization address:</h5>
                   </div>
@@ -138,7 +144,14 @@ export default function profileEdit() {
                         <option value="2">Two</option>
                         <option value="3">Three</option>
                       </Form.Select></h5>
-                    <h5> <DatePicker selected={startDate} onChange={(date, Date) => setStartDate(date)} /></h5>
+                    <h5> <Form>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                          <Form.Control
+                            type="date"
+                            
+                          />
+                        </Form.Group>
+                      </Form> </h5>
                     <h5><FloatingLabel
                         controlId="floatingTextarea2"
                         label="Edit address"
@@ -149,8 +162,15 @@ export default function profileEdit() {
                           style={{ height: "100px" }}
                         />
                       </FloatingLabel></h5>
+                      <div>
+                    <Button className="btn-info mb-3">
+                      Save changes
+                    </Button>
                   </div>
+                  </div>
+                  
                 </div>
+                
               </Card>
             </Col>
           </Row>
