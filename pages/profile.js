@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "../components/layout/Sidebar";
 import Image from "next/future/image";
-import dummyImage from "../public/user-image-png.png";
+import profilepic from "../public/pro.jpg";
 import Link from "next/link";
 import {
   Container,
@@ -36,8 +36,8 @@ export default function profile() {
                     className="ms-5 mt-3 fluid"
                     sizes="15vw"
                     alt="profile picture"
-                    src={dummyImage}
-                    width={350}
+                    src={profilepic}
+                    width={300}
                     height={300}
                   ></Image>
                 </div>

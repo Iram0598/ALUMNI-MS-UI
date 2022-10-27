@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export default function Sidebar() {
   return (
-    <div>
+    <div className="sidebar">
       <div className="text-white d-flex mt-2">
         <AiFillHome className="h2" />
         <Link href="/dashboard">

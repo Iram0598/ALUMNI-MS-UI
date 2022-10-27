@@ -27,6 +27,7 @@ body {
 
 .links {
   background-color: rgb(0, 0, 0);
+  
 }
 
 .main {
@@ -34,4 +35,7 @@ body {
 }
 .back {
   background-color: black;
+}
+.sidebar{
+  position:fixed;
 }

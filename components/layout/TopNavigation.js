@@ -14,7 +14,7 @@ import { FaExchangeAlt } from "react-icons/fa";
 export default function TopNavigation() {
   return (
   
-    <div>
+    <div className="sticky-top">
   
       <Card className="mt-2" style={{ backgroundColor: "rgb(0, 0, 0)", height: "5vh", paddingTop:"6px" }}>
         <Navbar className="h-25">
