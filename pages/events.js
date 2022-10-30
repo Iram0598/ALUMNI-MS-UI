@@ -29,10 +29,12 @@ export default function events() {
                 </h4>
               </div>
               <div className="align-self-end me-2">
+                <Link href="/eventCreate">
                 <Button variant="success">
                   <AiOutlinePlus />
                   Create new event
                 </Button>
+                </Link>
               </div>
               <div>
                 <Row className="g-4 ms-2 me-2 mb-3 mt-2">
