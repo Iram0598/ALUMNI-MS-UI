@@ -3,6 +3,8 @@ import Sidebar from "../components/layout/Sidebar";
 import cardpicture from "../public/pro.jpg";
 import Image from "next/future/image";
 import Dropdown from 'react-bootstrap/Dropdown';
+import {BsSearch} from "react-icons/bs"
+import {MdTipsAndUpdates} from "react-icons/md"
 import {
   Container,
   Row,
@@ -30,7 +32,7 @@ export default function alumni() {
             <Card>
               <div>
                 <h4 className="mt-3 ms-4 border-bottom border-dark">
-                  Newly added
+                 <MdTipsAndUpdates/> Newly added
                 </h4>
               </div>
               <div>
@@ -66,30 +68,58 @@ export default function alumni() {
             <Card className="mt-2">
               <div>
                 <h4 className="mt-3 ms-4 border-bottom border-dark">
-                  Find alumni
+                <BsSearch/> Find alumni
                 </h4>
               </div>
-              <Form className="d-flex justify-content-between w-25 ms-3 mb-3 mt-5">
-                <Form.Control
+              <Form className="d-flex  w-75 ms-3 mb-3 mt-5">
+                <Form.Control 
                   type="search"
-                  placeholder="Search"
+                  placeholder="Search by Name, ID, Batch or Institution"
                   className="me-2"
                   aria-label="Search"
                 />
                 <Button variant="outline-success">Search</Button>
-                <Dropdown>
+                <Dropdown className="ms-4">
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
                     Sort by
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                    <Dropdown.Item href="#/action-1">Year</Dropdown.Item>
                     <Dropdown.Item href="#/action-2">
-                      Another action
+                      ID
                     </Dropdown.Item>
                     <Dropdown.Item href="#/action-3">
-                      Something else
+                      Alphabet
                     </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+                <Dropdown className="ms-4">
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    Job sector
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1">IT</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">
+                      Bank
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">
+                      Garments
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">
+                      Media
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">
+                      Agriculture
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">
+                      Engineering
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">
+                      Research
+                    </Dropdown.Item>
+                    
                   </Dropdown.Menu>
                 </Dropdown>
               </Form>
@@ -99,10 +129,11 @@ export default function alumni() {
                     <tr>
                       <th>#</th>
                       <th>Profile</th>
-                      <th>ID</th>
-                      <th>Sector</th>
-                      <th>Batch</th>
-                      <th>Action</th>
+                      <th className="text-center">ID</th>
+                      <th className="text-center">Sector</th>
+                      <th className="text-center">Batch</th>
+                      <th className="text-center">Organization</th>
+                      <th className="text-center">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -119,10 +150,11 @@ export default function alumni() {
                       <td className="text-center align-middle">19103229</td>
                       <td className="text-center align-middle">IT</td>
                       <td className="text-center align-middle">2019</td>
+                      <td className="text-center align-middle">Ntitas IT Ltd</td>
                       <td className=" text-center align-middle">
                         <div>
-                          <Button className="ms-2 me-2">View profile</Button>
-                          <Button variant="warning">Manipulate</Button>
+                          <Button className="ms-2 me-2">View</Button>
+                          <Button variant="warning">Edit</Button>
                         </div>
                       </td>
                     </tr>
@@ -139,10 +171,11 @@ export default function alumni() {
                       <td className="text-center align-middle">19103229</td>
                       <td className="text-center align-middle">IT</td>
                       <td className="text-center align-middle">2019</td>
+                      <td className="text-center align-middle">Ntitas IT Ltd</td>
                       <td className=" text-center align-middle">
                         <div>
-                          <Button className="ms-2 me-2">View profile</Button>
-                          <Button variant="warning">Manipulate</Button>
+                          <Button className="ms-2 me-2">View</Button>
+                          <Button variant="warning">Edit</Button>
                         </div>
                       </td>
                     </tr>
