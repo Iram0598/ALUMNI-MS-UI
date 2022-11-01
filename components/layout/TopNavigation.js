@@ -18,13 +18,15 @@ export default function TopNavigation() {
   
       <Card className="mt-2" style={{ backgroundColor: "rgb(0, 0, 0)", height: "5vh", paddingTop:"6px" }}>
         <Navbar className="h-25">
-          
-            <Navbar.Brand
+             <Link href="/dashboard">
+             <Navbar.Brand
               className="text-white text-decoration-none ms-3 mt-2"
-              href="#home"
+              
             >
               <AiFillHome className="h2" /> Home <MdOutlineArrowForwardIos />
             </Navbar.Brand>
+             </Link>
+            
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
               <Navbar.Text className="text-white text-decoration-none">
