@@ -23,7 +23,7 @@ export default function events() {
           <Col sm={10}>
             <TopNavigation />
             <Card className="mt-2">
-              <div className="w-25">
+              <div >
                 <h4 className="mt-3 ms-4 border-bottom border-dark">
                   Upcoming events
                 </h4>
