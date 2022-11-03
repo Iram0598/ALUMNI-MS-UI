@@ -61,7 +61,7 @@ export default function events() {
                             </b>
                           </Card.Text>
                           <div className="d-flex justify-content-between">
-                            <Link href="/profile">
+                            <Link href="/eventsView">
                               <Button>Details</Button>
                             </Link>
                             <Button variant="light" className="bg-info">

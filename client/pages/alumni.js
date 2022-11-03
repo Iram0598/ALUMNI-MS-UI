@@ -153,8 +153,12 @@ export default function alumni() {
                       <td className="text-center align-middle">Ntitas IT Ltd</td>
                       <td className=" text-center align-middle">
                         <div>
+                          <Link href="/profile">
                           <Button className="ms-2 me-2">View</Button>
+                          </Link>
+                          <Link href="/profileEdit">
                           <Button variant="warning">Edit</Button>
+                          </Link>
                         </div>
                       </td>
                     </tr>
