@@ -1,7 +1,7 @@
 import React from "react";
-import { useState } from "react";
-import Sidebar from "../components/layout/Sidebar";
-import eventpic from "../public/event-management3.jpg";
+import { useState, useEffect } from "react";
+import Sidebar from "../../components/layout/Sidebar";
+import eventpic from "../../public/event-management3.jpg";
 import Image from "next/future/image";
 import Link from "next/link";
 import { BiEdit } from "react-icons/bi";
@@ -9,12 +9,23 @@ import { VscPassFilled } from "react-icons/vsc";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import TopNavigation from "../components/layout/TopNavigation";
+import TopNavigation from "../../components/layout/TopNavigation";
 
 export default function events() {
-  const [response, setresponse] = useState(true);
+  const [events, setEvents] = useState([]);
+
+  const fetchData = () => {
+    return fetch("http://localhost:5000/getEvent")
+      .then((res) => res.json())
+      .then((data) => setEvents(data));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
-    < div>
+    <div>
       <Container fluid>
         <Row className="min-vh-100 ">
           <Col className="back" sm={2}>
@@ -23,23 +34,23 @@ export default function events() {
           <Col sm={10}>
             <TopNavigation />
             <Card className="mt-2">
-              <div >
+              <div>
                 <h4 className="mt-3 ms-4 border-bottom border-dark">
                   Upcoming events
                 </h4>
               </div>
               <div className="align-self-end me-2">
-                <Link href="/eventCreate">
-                <Button variant="success">
-                  <AiOutlinePlus />
-                  Create new event
-                </Button>
+                <Link href="/events/create">
+                  <Button variant="success">
+                    <AiOutlinePlus />
+                    Create new event
+                  </Button>
                 </Link>
               </div>
               <div>
                 <Row className="g-4 ms-2 me-2 mb-3 mt-2">
-                  {Array.from({ length: 1 }).map((_, idx) => (
-                    <Col sm={3}>
+                  {events.map((item) => (
+                    <Col sm={3} key={item._id}>
                       <Card>
                         <Image
                           style={{ marginLeft: "30px", marginTop: "10px" }}
@@ -49,25 +60,26 @@ export default function events() {
                         ></Image>
                         <Card.Body>
                           <Card.Title style={{ textAlign: "left" }}>
-                            Iftar mahfil
+                            {item.title}
                           </Card.Title>
                           <Card.Text>
-                            This is a longer card with supporting text below as
-                            a natural lead-in to additional content. This
-                            content is a little bit longer.<br></br>
+                            {item.description}
+                            <br></br>
                             <br></br>
                             <b>
                               Respond status: <VscPassFilled /> Going{" "}
                             </b>
                           </Card.Text>
                           <div className="d-flex justify-content-between">
-                            <Link href="/eventsView">
+                            <Link href={`/events/view/${item._id}`}>
                               <Button>Details</Button>
                             </Link>
-                            <Button variant="light" className="bg-info">
-                              <BiEdit />
-                              Edit
-                            </Button>
+                            <Link href={`/events/${item._id}`}>
+                              <Button variant="light" className="bg-info">
+                                <BiEdit />
+                                Edit
+                              </Button>
+                            </Link>
                           </div>
                         </Card.Body>
                       </Card>
@@ -87,7 +99,7 @@ export default function events() {
                   {Array.from({ length: 4 }).map((_, idx) => (
                     <Col>
                       <Card>
-                      <Image
+                        <Image
                           style={{ marginLeft: "30px", marginTop: "10px" }}
                           src={eventpic}
                           width={690}
@@ -101,7 +113,6 @@ export default function events() {
                             content is a little bit longer.
                           </Card.Text>
                           <Button>View</Button>
-                          
                         </Card.Body>
                       </Card>
                     </Col>

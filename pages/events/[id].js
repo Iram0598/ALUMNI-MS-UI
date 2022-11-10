@@ -1,6 +1,6 @@
-import React from "react";
-import Sidebar from "../components/layout/Sidebar";
-import TopNavigation from "../components/layout/TopNavigation";
+import React, { useState } from "react";
+import Sidebar from "../../components/layout/Sidebar";
+import TopNavigation from "../../components/layout/TopNavigation";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Link from "next/link";
 import {
@@ -16,6 +16,26 @@ import {
 } from "react-bootstrap";
 
 export default function eventCreate() {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [coverphoto, setCoverphoto] = useState("");
+  const [eventdate, setEventdate] = useState("");
+
+  const collectEventData = async () => {
+    console.warn(title, description, coverphoto, eventdate);
+    const result = await fetch("http://localhost:5000/addEvent", {
+      method: "post",
+      body: JSON.stringify({ title, description, coverphoto, eventdate }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    result = await result.json();
+    console.warn(result);
+    // localStorage.setItem("user", JSON.stringify(result.result))
+
+    // router.push('/dashboard')
+  };
   return (
     <div>
       <Container fluid>
@@ -37,13 +57,13 @@ export default function eventCreate() {
                   <h5 style={{ marginTop: "31px" }}>Description:</h5>
                   <h5 className="mt-5">Cover photo:</h5>
                   <h5 className="mt-4">Event date:</h5>
-                  
                 </div>
                 <div className=" w-75">
                   <Form>
                     <Form.Group controlId="formBasicEmail">
                       <Form.Control
                         type="text"
+                        onChange={(e) => setTitle(e.target.value)}
                         placeholder="Enter event title"
                       />
                     </Form.Group>
@@ -56,17 +76,30 @@ export default function eventCreate() {
                   >
                     <Form.Control
                       as="textarea"
+                      onChange={(e) => setDescription(e.target.value)}
                       placeholder="Leave a comment here"
                     />
                   </FloatingLabel>
                   <Form.Group controlId="formFileSm" className="mt-4">
-                    <Form.Control type="file" size="sm" />
+                    <Form.Control
+                      type="file"
+                      onChange={(e) => setCoverphoto(e.target.value)}
+                      size="sm"
+                    />
                   </Form.Group>
                   <Form.Group className="mt-2" controlId="formBasicEmail">
-                    <Form.Control type="datetime-local" />
+                    <Form.Control
+                      type="datetime-local"
+                      onChange={(e) => setEventdate(e.target.value)}
+                    />
                   </Form.Group>
                   <Link href="/eventsView">
-                  <Button className="mt-4 align-middle">Create</Button>
+                    <Button
+                      className="mt-4 align-middle"
+                      onClick={collectEventData}
+                    >
+                      Create
+                    </Button>
                   </Link>
                 </div>
               </div>

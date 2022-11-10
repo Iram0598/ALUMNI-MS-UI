@@ -1,23 +1,15 @@
 import React from "react";
-import Sidebar from "../components/layout/Sidebar";
-import TopNavigation from "../components/layout/TopNavigation";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
-import Link from "next/link";
-import coverpic from "../public/IUBAT-has-obtained-the-39th-position-out-of-the-top-50-worldwide-ranked-institutions-under-the-Ethical-Value-category-in-Worlds-Universities-with-Real-Impact-WURI-Rankings-2022.jpg";
-import {
-  Container,
-  Row,
-  Col,
-  Badge,
-  Card,
-  CardGroup,
-  Button,
-  Table,
-  Form,
-} from "react-bootstrap";
+import Sidebar from "../../../components/layout/Sidebar";
+import TopNavigation from "../../../components/layout/TopNavigation";
+import coverpic from "../../../public/coverpic.jpg";
+import { Container, Row, Col, Card, Form } from "react-bootstrap";
 import Image from "next/future/image";
+import { useRouter } from "next/router";
 
 export default function eventsView() {
+  const router = useRouter();
+
+  console.log(router.query);
   return (
     <div>
       <Container fluid>
@@ -79,21 +71,9 @@ export default function eventsView() {
               <div className="d-flex ms-2 mt-3">
                 <h5>Response status</h5>
                 <Form className="ms-4">
-                  <Form.Check
-                    type="radio"
-                    name="check1"
-                    label="Going"
-                  />
-                  <Form.Check
-                    type="radio"
-                    name="check1"
-                    label="Not going"
-                  />
-                  <Form.Check
-                    type="radio"
-                    name="check1"
-                    label="Maybe"
-                  />
+                  <Form.Check type="radio" name="check1" label="Going" />
+                  <Form.Check type="radio" name="check1" label="Not going" />
+                  <Form.Check type="radio" name="check1" label="Maybe" />
                 </Form>
               </div>
             </Card>
