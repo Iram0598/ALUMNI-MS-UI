@@ -20,12 +20,14 @@ export default function eventCreate() {
   const [description, setDescription] = useState("");
   const [coverphoto, setCoverphoto] = useState("");
   const [eventdate, setEventdate] = useState("");
+  const [regfee, setRegfee] = useState("");
+  const [location, setLocation] = useState("");
 
   const collectEventData = async () => {
-    console.warn(title, description, coverphoto, eventdate);
+    console.warn(title, description, coverphoto, eventdate, regfee, location);
     const result = await fetch("http://localhost:5000/addEvent", {
       method: "post",
-      body: JSON.stringify({ title, description, coverphoto, eventdate }),
+      body: JSON.stringify({ title, description, coverphoto, eventdate, regfee, location }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -57,6 +59,8 @@ export default function eventCreate() {
                   <h5 style={{ marginTop: "31px" }}>Description:</h5>
                   <h5 className="mt-5">Cover photo:</h5>
                   <h5 className="mt-4">Event date:</h5>
+                  <h5 className="mt-2">Registration fee:</h5>
+                  <h5 className="mt-2">Location:</h5>
                 </div>
                 <div className=" w-75">
                   <Form>
@@ -93,7 +97,19 @@ export default function eventCreate() {
                       onChange={(e) => setEventdate(e.target.value)}
                     />
                   </Form.Group>
-                  <Link href="/eventsView">
+                  <Form.Group className="mt-2" controlId="formBasicEmail">
+                    <Form.Control
+                      type="textarea"
+                      onChange={(e) => setRegfee(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Form.Group className="mt-2" controlId="formBasicEmail">
+                    <Form.Control
+                      type="textarea"
+                      onChange={(e) => setLocation(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Link href="/events">
                     <Button
                       className="mt-4 align-middle"
                       onClick={collectEventData}

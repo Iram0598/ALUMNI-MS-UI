@@ -5,14 +5,19 @@ import eventpic from "../../public/event-management3.jpg";
 import Image from "next/future/image";
 import Link from "next/link";
 import { BiEdit } from "react-icons/bi";
+import { RiDeleteBinLine } from "react-icons/ri";
 import { VscPassFilled } from "react-icons/vsc";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import TopNavigation from "../../components/layout/TopNavigation";
+import { Modal } from "react-bootstrap";
 
 export default function events() {
   const [events, setEvents] = useState([]);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const fetchData = () => {
     return fetch("http://localhost:5000/getEvent")
@@ -23,6 +28,15 @@ export default function events() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const deleteEvent = async (id) => {
+    console.warn(id);
+    let result = await fetch(`http://localhost:5000/eventDelete/${id}`, {
+      method: "Delete",
+    });
+    result = await result.json();
+  
+  };
 
   return (
     <div>
@@ -50,7 +64,7 @@ export default function events() {
               <div>
                 <Row className="g-4 ms-2 me-2 mb-3 mt-2">
                   {events.map((item) => (
-                    <Col sm={3} key={item._id}>
+                    <><Col sm={3} key={item._id}>
                       <Card>
                         <Image
                           style={{ marginLeft: "30px", marginTop: "10px" }}
@@ -80,10 +94,35 @@ export default function events() {
                                 Edit
                               </Button>
                             </Link>
+                            <Link href="/events">
+                              <Button variant="danger" onClick={handleShow}>
+                                <RiDeleteBinLine />
+                                Delete
+                              </Button>
+                            </Link>
                           </div>
                         </Card.Body>
                       </Card>
-                    </Col>
+                    </Col><Modal
+                      show={show}
+                    
+                      onHide={handleClose}
+                      backdrop="static"
+                      keyboard={false}
+                    >
+                        <Modal.Header closeButton>
+                          <Modal.Title>Modal title</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Are you sure want to delete?</Modal.Body>
+                        <Modal.Footer>
+                          <Button variant="primary" onClick={() => deleteEvent(item._id)}>
+                            Yes
+                          </Button>
+                          <Button variant="secondary" onClick={handleClose}>
+                            Cancel
+                          </Button>
+                        </Modal.Footer>
+                      </Modal></>
                   ))}
                 </Row>
               </div>
@@ -123,6 +162,7 @@ export default function events() {
           </Col>
         </Row>
       </Container>
+    
     </div>
   );
 }
