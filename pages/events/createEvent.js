@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useParams } from "react";
+import React, { useState } from "react";
 import Sidebar from "../../components/layout/Sidebar";
 import TopNavigation from "../../components/layout/TopNavigation";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import {
   Container,
   Row,
@@ -16,49 +15,28 @@ import {
   Form,
 } from "react-bootstrap";
 
-export default function eventUpdate() {
+export default function eventCreate() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [coverphoto, setCoverphoto] = useState("");
   const [eventdate, setEventdate] = useState("");
   const [regfee, setRegfee] = useState("");
   const [location, setLocation] = useState("");
-  const router = useRouter();
 
-  const { id } = router.query;
-
-  useEffect(() => {
-    fillUpdateForm();
-  }, []);
-  const fillUpdateForm = async () => {
-    console.warn(id);
-    let result = await fetch(`http://localhost:5000/events/${id}`);
-    result = await result.json();
-    console.warn(result);
-    setTitle(result.title);
-    setCoverphoto(result.coverphoto);
-    setDescription(result.description);
-    setLocation(result.location);
-    setEventdate(result.eventdate);
-    setRegfee(result.regfee);
-  };
-
-  const updateEvent = async () => {
-    console.warn(title, description,coverphoto,location,regfee,eventdate);
-    let result = await fetch(`http://localhost:5000/eventUpdate/${id}`, {
-      method : 'Put',
-      body: JSON.stringify({title, description,coverphoto,location,regfee,eventdate}),
+  const collectEventData = async () => {
+    console.warn(title, description, coverphoto, eventdate, regfee, location);
+    const result = await fetch("http://localhost:5000/addEvent", {
+      method: "post",
+      body: JSON.stringify({ title, description, coverphoto, eventdate, regfee, location }),
       headers: {
-        'Content-Type':'application/json'
-      }
-      
+        "Content-Type": "application/json",
+      },
     });
     result = await result.json();
     console.warn(result);
+    // localStorage.setItem("user", JSON.stringify(result.result))
 
-    router.push('/events');
-        
-
+    // router.push('/dashboard')
   };
   return (
     <div>
@@ -88,7 +66,6 @@ export default function eventUpdate() {
                   <Form>
                     <Form.Group controlId="formBasicEmail">
                       <Form.Control
-                        value={title}
                         type="text"
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder="Enter event title"
@@ -102,7 +79,6 @@ export default function eventUpdate() {
                     label="Write event description here"
                   >
                     <Form.Control
-                    value={description}
                       as="textarea"
                       onChange={(e) => setDescription(e.target.value)}
                       placeholder="Leave a comment here"
@@ -110,7 +86,6 @@ export default function eventUpdate() {
                   </FloatingLabel>
                   <Form.Group controlId="formFileSm" className="mt-4">
                     <Form.Control
-                      
                       type="file"
                       onChange={(e) => setCoverphoto(e.target.value)}
                       size="sm"
@@ -118,28 +93,28 @@ export default function eventUpdate() {
                   </Form.Group>
                   <Form.Group className="mt-2" controlId="formBasicEmail">
                     <Form.Control
-                    value={eventdate}
                       type="datetime-local"
                       onChange={(e) => setEventdate(e.target.value)}
                     />
                   </Form.Group>
                   <Form.Group className="mt-2" controlId="formBasicEmail">
                     <Form.Control
-                    value={regfee}
                       type="textarea"
                       onChange={(e) => setRegfee(e.target.value)}
                     />
                   </Form.Group>
                   <Form.Group className="mt-2" controlId="formBasicEmail">
                     <Form.Control
-                    value={location}
                       type="textarea"
                       onChange={(e) => setLocation(e.target.value)}
                     />
                   </Form.Group>
                   <Link href="/events">
-                    <Button className="mt-4 align-middle" onClick={updateEvent}>
-                      Save changes
+                    <Button
+                      className="mt-4 align-middle"
+                      onClick={collectEventData}
+                    >
+                      Create
                     </Button>
                   </Link>
                 </div>

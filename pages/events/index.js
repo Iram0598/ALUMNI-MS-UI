@@ -35,11 +35,16 @@ export default function events() {
       method: "Delete",
     });
     result = await result.json();
+    if (result)
+    {
+      fetchData();
+      handleClose();
+    }
   
   };
 
   return (
-    <div>
+    <div >
       <Container fluid>
         <Row className="min-vh-100 ">
           <Col className="back" sm={2}>
@@ -47,14 +52,14 @@ export default function events() {
           </Col>
           <Col sm={10}>
             <TopNavigation />
-            <Card className="mt-2">
+            <Card className="mt-2" data-aos="fade-right" data-aos-delay="100" data-aos-duration="1000">
               <div>
                 <h4 className="mt-3 ms-4 border-bottom border-dark">
                   Upcoming events
                 </h4>
               </div>
               <div className="align-self-end me-2">
-                <Link href="/events/create">
+                <Link href="/events/createEvent">
                   <Button variant="success">
                     <AiOutlinePlus />
                     Create new event
@@ -114,7 +119,7 @@ export default function events() {
                           <Modal.Title>Modal title</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>Are you sure want to delete?</Modal.Body>
-                        <Modal.Footer>
+                        <Modal.Footer >
                           <Button variant="primary" onClick={() => deleteEvent(item._id)}>
                             Yes
                           </Button>
