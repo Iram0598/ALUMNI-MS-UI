@@ -1,7 +1,7 @@
-import React from "react";
-import Sidebar from "../components/layout/Sidebar";
+import {React, useState, useEffect} from "react";
+import Sidebar from "../../../components/layout/Sidebar";
 import Image from "next/future/image";
-import profilepic from "../public/pro.jpg";
+import profilepic from "../../public/pro.jpg";
 import Link from "next/link";
 import {
   Container,
@@ -13,12 +13,24 @@ import {
   SSRProvider,
   Form,
 } from "react-bootstrap";
-import TopNavigation from "../components/layout/TopNavigation";
+import TopNavigation from "../../../components/layout/TopNavigation";
 import { AiTwotoneEdit } from "react-icons/ai";
+import { useRouter } from "next/router";
 
 
 export default function profile() {
- 
+  const router = useRouter();
+  const [showprofile, setShowprofile] = useState([]);
+
+  const fetchData = () => {
+    return fetch("http://localhost:5000/profile/" + router.query.id)
+      .then((res) => res.json())
+      .then((data) => setShowprofile(data));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>

@@ -1,9 +1,10 @@
 import React from "react";
-import Sidebar from "../components/layout/Sidebar";
+import Sidebar from "../../components/layout/Sidebar";
 import Image from "next/future/image";
 import dummyImage from "../public/user-image-png.png";
 import { useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+
 
 
 import {
@@ -16,11 +17,13 @@ import {
   SSRProvider,
   Form,
 } from "react-bootstrap";
-import TopNavigation from "../components/layout/TopNavigation";
+import TopNavigation from "../../components/layout/TopNavigation";
 import { AiTwotoneEdit } from "react-icons/ai";
 
 export default function profileEdit() {
+  const router = useRouter();
     const [startDate, setStartDate] = useState(new Date());
+
   return (
     <>
       <div>

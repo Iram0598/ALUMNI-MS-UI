@@ -1,6 +1,6 @@
-import React from "react";
-import Sidebar from "../components/layout/Sidebar";
-import cardpicture from "../public/pro.jpg";
+import {React, useState, useEffect} from "react";
+import Sidebar from "../../components/layout/Sidebar";
+import cardpicture from "../../public/pro.jpg";
 import Image from "next/future/image";
 import Dropdown from 'react-bootstrap/Dropdown';
 import {BsSearch} from "react-icons/bs"
@@ -17,9 +17,20 @@ import {
   Form,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import TopNavigation from "../components/layout/TopNavigation";
+import TopNavigation from "../../components/layout/TopNavigation";
 import Link from "next/link";
 export default function alumni() {
+  const [profiles, setProfiles] = useState([]);
+
+  const fetchData = () => {
+    return fetch("http://localhost:5000/getProfiledata")
+      .then((res) => res.json())
+      .then((data) => setProfiles(data));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <div>
       <Container fluid>
@@ -37,8 +48,8 @@ export default function alumni() {
               </div>
               <div>
                 <Row className="g-4 ms-2 me-2 mb-3 mt-2">
-                  {Array.from({ length: 1 }).map((_, idx) => (
-                    <Col sm={3}>
+                  {profiles.map((item) => (
+                    <Col sm={3} key={item._id}>
                       <Card>
                         <Image
                           style={{ marginLeft: "30px", marginTop: "10px" }}
@@ -48,14 +59,12 @@ export default function alumni() {
                         ></Image>
                         <Card.Body>
                           <Card.Title style={{ textAlign: "center" }}>
-                            Mustafa Iram Udoy
+                            {item.name}
                           </Card.Title>
                           <Card.Text>
-                            This is a longer card with supporting text below as
-                            a natural lead-in to additional content. This
-                            content is a little bit longer.
+                           {item.organization}
                           </Card.Text>
-                          <Link href="/profile">
+                          <Link href={`/profile/view/${item._id}`}>
                             <Button>Visit profile</Button>
                           </Link>
                         </Card.Body>
@@ -137,20 +146,21 @@ export default function alumni() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
+                   {profiles.map((item, i)=>(
+                    <tr key={item._id}>
+                      <td>{i+1}</td>
                       <td>
                         <Image
                           src={cardpicture}
                           width={100}
                           height={100}
                         ></Image>{" "}
-                        Mustafa Iram Udoy
+                        {item.name}
                       </td>
-                      <td className="text-center align-middle">19103229</td>
-                      <td className="text-center align-middle">IT</td>
-                      <td className="text-center align-middle">2019</td>
-                      <td className="text-center align-middle">Ntitas IT Ltd</td>
+                      <td className="text-center align-middle">{item.studentid}</td>
+                      <td className="text-center align-middle">{item.department}</td>
+                      <td className="text-center align-middle">{item.admissionyear}</td>
+                      <td className="text-center align-middle">{item.organization}</td>
                       <td className=" text-center align-middle">
                         <div>
                           <Link href="/profile">
@@ -162,27 +172,8 @@ export default function alumni() {
                         </div>
                       </td>
                     </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>
-                        <Image
-                          src={cardpicture}
-                          width={100}
-                          height={100}
-                        ></Image>{" "}
-                        Mustafa Iram Udoy
-                      </td>
-                      <td className="text-center align-middle">19103229</td>
-                      <td className="text-center align-middle">IT</td>
-                      <td className="text-center align-middle">2019</td>
-                      <td className="text-center align-middle">Ntitas IT Ltd</td>
-                      <td className=" text-center align-middle">
-                        <div>
-                          <Button className="ms-2 me-2">View</Button>
-                          <Button variant="warning">Edit</Button>
-                        </div>
-                      </td>
-                    </tr>
+                   ))}
+                    
                   </tbody>
                 </Table>
               </div>

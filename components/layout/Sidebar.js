@@ -40,7 +40,7 @@ export default function Sidebar() {
               <AiFillHome /> Home
             </a>
           </Link>
-          <Link href="/alumni">
+          <Link href="/profile">
             <a class="d-flex justify-content-between w3-bar-item w3-button w3-border-bottom ">
               <div>
                 <GoOrganization /> Alumni{" "}
@@ -100,10 +100,8 @@ export default function Sidebar() {
                 </Dropdown.Item>
                 <Dropdown.Item href="#/action-3">
                   <FaExchangeAlt className="me-2" />
-                  Something else
+                  Change password
                 </Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item href="#/action-4">Change theme</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>
