@@ -93,7 +93,7 @@ export default function Sidebar() {
               </Dropdown.Toggle>
 
               <Dropdown.Menu className="ms-2" variant="dark">
-                <Dropdown.Item href="#/action-2">
+                <Dropdown.Item href="/">
                   {" "}
                   <BiLogOut className="me-2" />
                   Logout

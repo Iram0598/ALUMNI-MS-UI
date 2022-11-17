@@ -1,7 +1,7 @@
 import {React, useState, useEffect} from "react";
 import Sidebar from "../../../components/layout/Sidebar";
 import Image from "next/future/image";
-import profilepic from "../../public/pro.jpg";
+import profilepic from "../../../public/pro.jpg";
 import Link from "next/link";
 import {
   Container,
@@ -54,7 +54,7 @@ export default function profile() {
                   ></Image>
                 </div>
                 <div>
-                  <Link href="/profileEdit">
+                  <Link href={`/profile/${router.query.id}`}>
                   <Button className="ms-5 btn-light">
                     <AiTwotoneEdit /> Edit profile
                   </Button>
@@ -76,13 +76,13 @@ export default function profile() {
                     <h5>Permanent address:</h5>
                   </div>
                   <div>
-                    <h5>Mustafa Iram Udoy</h5>
+                    <h5>{showprofile?.name}</h5>
                     <h5>19103229</h5>
                     <h5>BCSE</h5>
-                    <h5>Male</h5>
+                    <h5>{showprofile?.gender}</h5>
                     <h5>2019</h5>
-                    <h5>111/B, Surtaranga road, Tongi, Gazipur</h5>
-                    <h5>Kazla, Tarail, Kishoreganj</h5>
+                    <h5>{showprofile.presentaddress}</h5>
+                    <h5>{showprofile?.permanentaddress}</h5>
                   </div>
                 </div>
                 <div className="ms-5 mb-4 mt-3">
@@ -98,12 +98,12 @@ export default function profile() {
                     <h5>Organization address:</h5>
                   </div>
                   <div>
-                    <h5>Arunima group</h5>
-                    <h5>IT</h5>
-                    <h5>Junior frontend developer</h5>
-                    <h5>Garments</h5>
-                    <h5>3rd September, 2022</h5>
-                    <h5>Jashimuddin</h5>
+                    <h5>{showprofile?.organization}</h5>
+                    <h5>{showprofile?.department}</h5>
+                    <h5>{showprofile?.designation}</h5>
+                    <h5>{showprofile?.o_type}</h5>
+                    <h5>{showprofile?.joiningdate}</h5>
+                    <h5>{showprofile?.o_address}</h5>
                   </div>
                 </div>
               </Card>
