@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Badge, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AiFillHome, AiTwotoneEdit } from "react-icons/ai";
@@ -13,13 +13,24 @@ import Dropdown from "react-bootstrap/Dropdown";
 import profilePic from "../../public/pro.jpg";
 import { FaExchangeAlt } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
+import {BsFillBriefcaseFill} from "react-icons/bs"
 
 export default function Sidebar() {
+  const [profile, setProfile] = useState([]);
+  const fetchData = () => {
+    return fetch("http://localhost:5000/getProfiledata")
+      .then((res) => res.json())
+      .then((data) => {setProfile(data)});
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <>
       <Container fluid>
         <div
-          className="w3-sidebar bg-dark text-white w3-bar-block min-vh-100 "
+          className="w3-sidebar text-white w3-bar-block min-vh-100 sidenav "
           style={{
             width: "17%",
             marginLeft: "0px",
@@ -27,6 +38,7 @@ export default function Sidebar() {
             left: "0px",
             right: "0px",
             height: "950px",
+            backgroundColor: "#000000"
           }}
         >
           <h3 className="w3-bar-item mb-5">
@@ -56,6 +68,14 @@ export default function Sidebar() {
               <Badge bg="danger">+2</Badge>
             </a>
           </Link>
+          <Link href="/news">
+            <a class="d-flex justify-content-between w3-bar-item w3-button w3-border-bottom">
+              <div>
+                <BsFillBriefcaseFill /> Job news
+              </div>
+              <Badge bg="danger">+2</Badge>
+            </a>
+          </Link>
 
           <div class="w3-dropdown-hover">
             <button class="w3-button">
@@ -73,6 +93,7 @@ export default function Sidebar() {
             </div>
           </div>
           <div style={{ marginTop: "60vh" }} className="border-top">
+           {profile.map((item) => (
             <Dropdown className="ms-2 bg-dark dropup">
               <Dropdown.Toggle
                 id="dropdown-button-dark-example1"
@@ -89,7 +110,7 @@ export default function Sidebar() {
                   // blurDataURL="data:..." automatically provided
                   // placeholder="blur" // Optional blur-up while loading
                 />
-                Mustafa Iram Udoy
+                {item.studentid}
               </Dropdown.Toggle>
 
               <Dropdown.Menu className="ms-2" variant="dark">
@@ -99,11 +120,16 @@ export default function Sidebar() {
                   Logout
                 </Dropdown.Item>
                 <Dropdown.Item href="#/action-3">
-                  <FaExchangeAlt className="me-2" />
-                  Change password
+                  <Link href="/password">
+                    <div>
+                      <FaExchangeAlt className="me-2" />
+                      Change password
+                    </div>
+                  </Link>
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
+             ))}
           </div>
         </div>
       </Container>

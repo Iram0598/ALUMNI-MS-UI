@@ -14,7 +14,7 @@ import {
   Form,
 } from "react-bootstrap";
 import TopNavigation from "../../../components/layout/TopNavigation";
-import { AiTwotoneEdit } from "react-icons/ai";
+import { AiTwotoneEdit, AiOutlinePlus } from "react-icons/ai";
 import { useRouter } from "next/router";
 
 
@@ -88,6 +88,7 @@ export default function profile() {
                 <div className="ms-5 mb-4 mt-3">
                   <h1 className="border-bottom border-dark">Job description</h1>
                 </div>
+              
                 <div className="d-flex ms-5">
                   <div className="me-5">
                     <h5>Company/Organization:</h5>
@@ -98,13 +99,16 @@ export default function profile() {
                     <h5>Organization address:</h5>
                   </div>
                   <div>
-                    <h5>{showprofile?.organization}</h5>
+                    <h5>{showprofile?.organization} </h5>
                     <h5>{showprofile?.department}</h5>
                     <h5>{showprofile?.designation}</h5>
                     <h5>{showprofile?.o_type}</h5>
                     <h5>{showprofile?.joiningdate}</h5>
                     <h5>{showprofile?.o_address}</h5>
                   </div>
+                </div>
+                <div className="ms-5 mt-3">
+                <Button variant="dark"> <AiOutlinePlus className="me-2" />Create a vacancy post for {showprofile?.organization}</Button>
                 </div>
               </Card>
             </Col>
