@@ -40,14 +40,14 @@ export default function index() {
                     </Card.Body>
                     <ListGroup className="list-group-flush">
                       <ListGroup.Item>
-                        <b>Vacancy:</b>
+                        <b></b>
                       </ListGroup.Item>
                       <ListGroup.Item>
-                        <b>Location:</b>
+                        <b>Vacancy:</b>
                       </ListGroup.Item>
                     </ListGroup>
                     <Card.Body>
-                      <Link href="">
+                      <Link href="/jobViewExample">
                         <Button variant="dark"> <BiCommentDetail className="me-2"/>Details</Button>
                       </Link>
                      
@@ -76,7 +76,7 @@ export default function index() {
                       </ListGroup.Item>
                     </ListGroup>
                     <Card.Body>
-                    <Link href="">
+                    <Link href="/news/view">
                         <Button variant="dark"> <BiCommentDetail className="me-2"/>Details</Button>
                       </Link>
                       

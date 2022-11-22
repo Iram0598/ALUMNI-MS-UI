@@ -1,13 +1,13 @@
-import React from 'react'
-import Sidebar from "../../../components/layout/Sidebar";
-import TopNavigation from "../../../components/layout/TopNavigation";
+import React from "react";
+import Sidebar from "../components/layout/Sidebar";
+import TopNavigation from "../components/layout/TopNavigation";
 import { Container, Row, Col, Card, Form } from "react-bootstrap";
 import Image from "next/future/image";
-import coverpic from "../../../public";
+import coverpic from "../public/coverpic.jpg";
 export default function jobView() {
   return (
     <div>
-        <Container fluid>
+      <Container fluid>
         <Row className="min-vh-100 ">
           <Col className="back" sm={2}>
             <Sidebar />
@@ -22,16 +22,35 @@ export default function jobView() {
               </div>
               <div className="ms-3 mt-4 ">
                 <h3>
-                  <b>{showevent?.title}</b>
+                  <b>Title</b>
                 </h3>
               </div>
               <div className="ms-2">
                 <Image src={coverpic} width={1400} height={600}></Image>
               </div>
               <div className="ms-2 mt-3">
-                <h6>
-                  {showevent?.description} 
-                </h6>
+                <h6>Description</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>Job responsibility</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>Employment status</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>Workplace</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>Educational requirements</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>Application deadline :</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>Salary</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>Vacancy</h6>
               </div>
               <div className="d-flex ms-2 mt-3">
                 <div>
@@ -45,7 +64,6 @@ export default function jobView() {
                     <b>Location: {showevent?.location}</b>
                   </h5>
                 </div>
-               
               </div>
               <div className="d-flex ms-2 mt-3">
                 <h5>Response status</h5>
@@ -60,5 +78,5 @@ export default function jobView() {
         </Row>
       </Container>
     </div>
-  )
+  );
 }
