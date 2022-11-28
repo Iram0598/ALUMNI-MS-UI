@@ -55,13 +55,13 @@ export default function jobView() {
               <div className="d-flex ms-2 mt-3">
                 <div>
                   <h5>
-                    <b>Date & Time: {showevent?.eventdate}</b>
+                    <b>Date & Time:</b>
                   </h5>
                   <h5>
-                    <b>Registration fee: {showevent?.regfee} </b>
+                    <b>Registration fee: </b>
                   </h5>
                   <h5>
-                    <b>Location: {showevent?.location}</b>
+                    <b>Location: </b>
                   </h5>
                 </div>
               </div>

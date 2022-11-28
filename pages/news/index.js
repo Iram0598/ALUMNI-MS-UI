@@ -7,7 +7,8 @@ import Image from "next/future/image";
 import jobpicture from "../../public/jobpic.jpg";
 import jobpicture2 from "../../public/10-what-is-ux-design.jpg";
 import Link from "next/link";
-import {BiCommentDetail} from "react-icons/bi"
+import { BiCommentDetail } from "react-icons/bi";
+import { AiOutlinePlus } from "react-icons/ai";
 export default function index() {
   return (
     <div>
@@ -18,8 +19,18 @@ export default function index() {
           </Col>
           <Col sm={10}>
             <TopNavigation />
+            <div className="align-self-end me-2 mt-3">
+              <Link href="/news/createJob">
+                <Button variant="success">
+                  <AiOutlinePlus />
+                  New vacancy
+                </Button>
+              </Link>
+            </div>
             <div className="text-center">
-              <h2><u className="mt-2">Job offers</u></h2>
+              <h2>
+                <u className="mt-2">Job offers</u>
+              </h2>
             </div>
             <div className="mt-5">
               <Row>
@@ -48,9 +59,12 @@ export default function index() {
                     </ListGroup>
                     <Card.Body>
                       <Link href="/jobViewExample">
-                        <Button variant="dark"> <BiCommentDetail className="me-2"/>Details</Button>
+                        <Button variant="dark">
+                          {" "}
+                          <BiCommentDetail className="me-2" />
+                          Details
+                        </Button>
                       </Link>
-                     
                     </Card.Body>
                   </Card>
                   <Card className="me-3 news" style={{ width: "24rem" }}>
@@ -76,10 +90,13 @@ export default function index() {
                       </ListGroup.Item>
                     </ListGroup>
                     <Card.Body>
-                    <Link href="/news/view">
-                        <Button variant="dark"> <BiCommentDetail className="me-2"/>Details</Button>
+                      <Link href="/news/view">
+                        <Button variant="dark">
+                          {" "}
+                          <BiCommentDetail className="me-2" />
+                          Details
+                        </Button>
                       </Link>
-                      
                     </Card.Body>
                   </Card>
                 </Col>
