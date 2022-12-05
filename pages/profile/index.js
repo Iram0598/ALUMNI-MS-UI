@@ -70,7 +70,7 @@ export default function alumni() {
               <div>
                 <Row className="g-4 ms-2 me-2 mb-3 mt-2">
                   {profiles.map((item) => (
-                    <Col sm={3} key={item._id}>
+                    <Col sm={4} key={item._id}>
                       <Card>
                         <Image
                           style={{ marginLeft: "30px", marginTop: "10px" }}
@@ -84,7 +84,7 @@ export default function alumni() {
                           </Card.Title>
                           <Card.Text>{item.organization}</Card.Text>
                           <Link href={`/profile/view/${item._id}`}>
-                            <Button>Visit profile</Button>
+                            <Button variant="dark">Visit profile</Button>
                           </Link>
                         </Card.Body>
                       </Card>

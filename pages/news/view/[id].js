@@ -1,13 +1,30 @@
-import React from 'react'
+import React from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "../../../components/layout/Sidebar";
+
 import TopNavigation from "../../../components/layout/TopNavigation";
-import { Container, Row, Col, Card, Form } from "react-bootstrap";
+import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 import Image from "next/future/image";
-import coverpic from "../../../public";
+import coverpic from "../../../public/coverpic.jpg";
+import { useRouter } from "next/router";
+import Link from "next/link";
 export default function jobView() {
+  const router = useRouter();
+  const [showjob, setShowjob] = useState([]);
+
+  const fetchData = () => {
+    return fetch("http://localhost:5000/jobs/" + router.query.id)
+      .then((res) => res.json())
+      .then((data) => setShowjob(data));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div>
-        <Container fluid>
+      <Container fluid>
         <Row className="min-vh-100 ">
           <Col className="back" sm={2}>
             <Sidebar />
@@ -22,43 +39,75 @@ export default function jobView() {
               </div>
               <div className="ms-3 mt-4 ">
                 <h3>
-                  <b>{showevent?.title}</b>
+                  <b>{showjob?.job_title}</b>
                 </h3>
               </div>
               <div className="ms-2">
-                <Image src={coverpic} width={1400} height={600}></Image>
+                <Image src={coverpic} width={1085} height={600}></Image>
               </div>
               <div className="ms-2 mt-3">
-                <h6>
-                  {showevent?.description} 
-                </h6>
+                <h6>Description</h6>
               </div>
-              <div className="d-flex ms-2 mt-3">
-                <div>
-                  <h5>
-                    <b>Date & Time: {showevent?.eventdate}</b>
-                  </h5>
-                  <h5>
-                    <b>Registration fee: {showevent?.regfee} </b>
-                  </h5>
-                  <h5>
-                    <b>Location: {showevent?.location}</b>
-                  </h5>
-                </div>
-               
+              <div className="ms-2 mt-3">
+                <h6>{showjob?.job_des}</h6>
               </div>
-              <div className="d-flex ms-2 mt-3">
-                <h5>Response status</h5>
-                <Form className="ms-4">
-                  <Form.Check type="radio" name="check1" label="Going" />
-                  <Form.Check type="radio" name="check1" label="Not going" />
-                  <Form.Check type="radio" name="check1" label="Maybe" />
-                </Form>
+              <div className="ms-2 mt-3">
+                <h6>Job responsibility</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>{showjob?.job_resp}</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>Employment status</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>{showjob?.empt_stat}</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>Worktype</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>{showjob?.worktype}</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>Educational requirements</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>{showjob?.edu_req}</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>Application deadline :</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>{showjob?.app_deadline}</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>Salary</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>{showjob?.salary}</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>Vacancy</h6>
+              </div>
+              <div className="ms-2 mt-3">
+                <h6>{showjob?.vacancy}</h6>
+              </div>
+              <div className="ms-3">
+                <Form.Group controlId="formFileSm" className="mb-3">
+                  <Form.Label>Drop your CV here</Form.Label>
+                  <Form.Control type="file" size="sm" />
+                </Form.Group>
+              </div>
+              <div>
+                <Link href="/">
+                  <Button variant="dark" className="ms-2 mb-3">Upload</Button>
+                </Link>
               </div>
             </Card>
           </Col>
         </Row>
       </Container>
     </div>
-  )
+  );
 }

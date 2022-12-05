@@ -87,12 +87,10 @@ export default function Sidebar() {
                   <AiTwotoneEdit /> Your profile
                 </a>
               </Link>
-              <Link href="/profileEdit">
-                <a class="w3-bar-item w3-button">Create new profile</a>
-              </Link>
+              
             </div>
           </div>
-          <div style={{ marginTop: "60vh" }} className="border-top">
+          <div style={{ marginTop: "45vh" }} className="border-top">
            {profile.map((item) => (
             <Dropdown className="ms-2 bg-dark dropup">
               <Dropdown.Toggle

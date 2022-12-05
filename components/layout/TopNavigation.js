@@ -18,13 +18,13 @@ export default function TopNavigation() {
       >
         <Navbar className="h-25">
           <Link href="/dashboard">
-            <Navbar.Brand className="text-white text-decoration-none ms-3 mt-3">
+            <Navbar.Brand className="text-white text-decoration-none ms-3 mt-1">
               <AiFillHome className="h5" /> Home <MdOutlineArrowForwardIos />
             </Navbar.Brand>
           </Link>
 
           <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end text-white me-3 mt-2">
+          <Navbar.Collapse className="justify-content-end text-white me-3">
             <Link href="/profile">
               <h3>
                 <BiLogOut />
