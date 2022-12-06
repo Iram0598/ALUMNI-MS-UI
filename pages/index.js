@@ -1,7 +1,8 @@
+import React from "react";
 import { Card, Form, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {

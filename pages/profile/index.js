@@ -22,6 +22,28 @@ import Link from "next/link";
 export default function alumni() {
   const [profiles, setProfiles] = useState([]);
   const [searchprofiles, setSearchprofiles] = useState([]);
+  // const [sort, setSort] = useState([]);
+  const[order, setOrder]= useState("ASC");
+
+  const sorting =(col)=>{
+    if (order==="ASC"){
+      const sorted = [...profiles].sort((a,b)=>
+      a[col].toLowerCase() > b[col].toLowerCase() ? 1: -1
+      );
+      setSearchprofiles(sorted);
+      setOrder("DSC");
+
+    }
+    if (order==="DSC"){
+      const sorted = [...profiles].sort((a,b)=>
+      a[col].toLowerCase() <  b[col].toLowerCase() ? 1: -1
+      );
+      setSearchprofiles(sorted);
+      setOrder("ASC");
+      
+    }
+ };
+
 
 
   const searchHandler = async(event) =>{
@@ -38,15 +60,22 @@ export default function alumni() {
    else {
     fetchData();
    }
-   
-   
- 
+
   }
 
+  const searchHandler1 = async(event) =>{
+    let key = event.target.value;
+    if (key)
+    {
+     let result = await fetch (`http://localhost:5000/api/sorted_items`)
+     result = await result.json();
+ 
+   }
+  }
   const fetchData = () => {
     return fetch("http://localhost:5000/getProfiledata")
       .then((res) => res.json())
-      .then((data) => {setProfiles(data);setSearchprofiles(data)});
+      .then((data) => {setProfiles(data);setSearchprofiles(data);});
   };
 
   useEffect(() => {
@@ -103,7 +132,7 @@ export default function alumni() {
                 <Form.Control
                   onChange={searchHandler}
                   type="search"
-                  placeholder="Search by Name, ID, Batch or Institution"
+                  placeholder="Search by Name, sector or organization"
                   className="me-2"
                   aria-label="Search"
                 />
@@ -113,39 +142,25 @@ export default function alumni() {
                     Sort by
                   </Dropdown.Toggle>
 
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Year</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">ID</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Alphabet</Dropdown.Item>
+                  <Dropdown.Menu >
+                    <Dropdown.Item onClick={()=>sorting("admissionyear")}>Batch</Dropdown.Item>
+                    <Dropdown.Item onClick={()=>sorting("studentid")} >ID</Dropdown.Item>
+                    <Dropdown.Item onClick={()=>sorting("name")} >Name</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
-                <Dropdown className="ms-4">
-                  <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Job sector
-                  </Dropdown.Toggle>
-
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">IT</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Bank</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Garments</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Media</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Agriculture</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Engineering</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Research</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
+                
               </Form>
               <div className="p-2">
                 <Table striped bordered hover responsive size="sm">
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Profile</th>
-                      <th className="text-center">ID</th>
-                      <th className="text-center">Sector</th>
-                      <th className="text-center">Batch</th>
-                      <th className="text-center">Organization</th>
-                      <th className="text-center">Action</th>
+                      <th onClick={()=>sorting("name")}>Profile</th>
+                      <th onClick={()=>sorting("studentid")} className="text-center">ID</th>
+                      <th onClick={()=>sorting("department")} className="text-center">Sector</th>
+                      <th onClick={()=>sorting("admissionyear")} className="text-center">Batch</th>
+                      <th onClick={()=>sorting("organization")} className="text-center">Organization</th>
+                      
                     </tr>
                   </thead>
                   <tbody>

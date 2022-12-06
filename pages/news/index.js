@@ -104,7 +104,7 @@ export default function index() {
                               Edit
                             </Button>
                           </Link>
-                          <Link href="">
+                          <Link href="news">
                             <Button
                               variant="danger"
                               className="ms-2"
