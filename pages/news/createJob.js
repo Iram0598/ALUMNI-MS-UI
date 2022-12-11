@@ -143,7 +143,7 @@ export default function createJob() {
                 </Form.Group>
               </Row>
               <Link href="/news">
-                <Button className="ms-3 mt-3" onClick={collectJobData}>
+                <Button variant="dark" className="ms-3 mt-3" onClick={collectJobData}>
                   <AiOutlinePlus /> Create
                 </Button>
               </Link>

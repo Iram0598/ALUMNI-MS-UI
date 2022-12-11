@@ -19,7 +19,7 @@ export default function index() {
               <div>
                 <h2>Change password</h2>
               </div>
-              <div className="w-25 mt-5 ">
+              <div className="w-75 mt-5 ">
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                   <Form.Label>Current password</Form.Label>
                   <Form.Control type="password" placeholder="Password" />

@@ -7,24 +7,24 @@ import { BiLogOut } from "react-icons/bi";
 
 export default function TopNavigation() {
   return (
-    <div className="sticky-top">
+    <div className="sticky-top mb-3">
       <Card
-        className="mt-2"
+        className="mt-2 shadow"
         style={{
-          backgroundColor: "rgb(0, 0, 0)",
-          height: "5vh",
+          
+          height: "8vh",
           paddingTop: "6px",
         }}
       >
         <Navbar className="h-25">
           <Link href="/dashboard">
-            <Navbar.Brand className="text-white text-decoration-none ms-3 mt-1">
+            <Navbar.Brand className=" text-decoration-none ms-3 mt-4">
               <AiFillHome className="h5" /> Home <MdOutlineArrowForwardIos />
             </Navbar.Brand>
           </Link>
 
           <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end text-white me-3">
+          <Navbar.Collapse  className="justify-content-end  me-3 mt-3 hover">
             <Link href="/profile">
               <h3>
                 <BiLogOut />

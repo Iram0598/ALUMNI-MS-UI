@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import Sidebar from "../../components/layout/Sidebar";
-import cardpicture from "../../public/pro.jpg";
+import cardpicture from "../../public/david.jpg";
 import Image from "next/future/image";
 import Dropdown from "react-bootstrap/Dropdown";
 import { BsSearch } from "react-icons/bs";
@@ -102,7 +102,7 @@ export default function alumni() {
                     <Col sm={4} key={item._id}>
                       <Card>
                         <Image
-                          style={{ marginLeft: "30px", marginTop: "10px" }}
+                          style={{ marginLeft: "20px", marginTop: "10px" }}
                           src={cardpicture}
                           width={300}
                           height={300}
