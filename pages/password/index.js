@@ -33,7 +33,7 @@ export default function index() {
                   <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
                 <Link href="/">
-                <Button className="mt-3">Save changes</Button>
+                <Button variant="dark" className="mt-3">Save changes</Button>
                 </Link>
                 
               </div>

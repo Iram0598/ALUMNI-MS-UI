@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { AiFillHome, AiTwotoneEdit } from "react-icons/ai";
 import { GoOrganization } from "react-icons/go";
 import { MdCelebration, MdReadMore } from "react-icons/md";
-import { RiAccountCircleFill } from "react-icons/ri";
+import { RiAccountCircleFill, RiGitPullRequestFill } from "react-icons/ri";
 import Link from "next/link";
 import "w3-css/4/w3pro.css";
 import Image from "next/future/image";
@@ -72,6 +72,14 @@ export default function Sidebar() {
             <a class="d-flex justify-content-between w3-bar-item w3-button w3-border-bottom">
               <div>
                 <BsFillBriefcaseFill /> Job news
+              </div>
+              <Badge bg="danger">+2</Badge>
+            </a>
+          </Link>
+          <Link href="/requests">
+            <a class="d-flex justify-content-between w3-bar-item w3-button w3-border-bottom">
+              <div>
+                <RiGitPullRequestFill /> Requests
               </div>
               <Badge bg="danger">+2</Badge>
             </a>

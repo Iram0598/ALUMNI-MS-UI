@@ -125,7 +125,7 @@ export default function alumni() {
             <Card className="mt-2">
               <div>
                 <h4 className="mt-3 ms-4 border-bottom border-dark">
-                  <BsSearch /> Find alumni
+                  Find alumni
                 </h4>
               </div>
               <Form className="d-flex  w-75 ms-3 mb-3 mt-5">
@@ -143,7 +143,7 @@ export default function alumni() {
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu >
-                    <Dropdown.Item onClick={()=>sorting("admissionyear")}>Batch</Dropdown.Item>
+                   
                     <Dropdown.Item onClick={()=>sorting("studentid")} >ID</Dropdown.Item>
                     <Dropdown.Item onClick={()=>sorting("name")} >Name</Dropdown.Item>
                   </Dropdown.Menu>
@@ -158,7 +158,6 @@ export default function alumni() {
                       <th onClick={()=>sorting("name")}>Profile</th>
                       <th onClick={()=>sorting("studentid")} className="text-center">ID</th>
                       <th onClick={()=>sorting("department")} className="text-center">Sector</th>
-                      <th onClick={()=>sorting("admissionyear")} className="text-center">Batch</th>
                       <th onClick={()=>sorting("organization")} className="text-center">Organization</th>
                       
                     </tr>
@@ -181,9 +180,7 @@ export default function alumni() {
                         <td className="text-center align-middle">
                           {item.o_type}
                         </td>
-                        <td className="text-center align-middle">
-                          {item.admissionyear}
-                        </td>
+                      
                         <td className="text-center align-middle">
                           {item.organization}
                         </td>

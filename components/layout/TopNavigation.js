@@ -4,6 +4,7 @@ import { AiFillHome, AiTwotoneEdit } from "react-icons/ai";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import Link from "next/link";
 import { BiLogOut } from "react-icons/bi";
+import {IoIosNotifications} from "react-icons/io"
 
 export default function TopNavigation() {
   return (
@@ -27,6 +28,8 @@ export default function TopNavigation() {
           <Navbar.Collapse  className="justify-content-end  me-3 mt-3 hover">
             <Link href="/profile">
               <h3>
+                
+                <IoIosNotifications/>
                 <BiLogOut />
               </h3>
             </Link>
