@@ -46,49 +46,49 @@ export default function jobView() {
                 <Image src={coverpic} width={1085} height={600}></Image>
               </div>
               <div className="ms-2 mt-3">
-                <h6>Description</h6>
+                <h4><b>Description</b></h4>
               </div>
               <div className="ms-2 mt-3">
                 <h6>{showjob?.job_des}</h6>
               </div>
               <div className="ms-2 mt-3">
-                <h6>Job responsibility</h6>
+                <h4><b>Job responsibility</b></h4>
               </div>
               <div className="ms-2 mt-3">
                 <h6>{showjob?.job_resp}</h6>
               </div>
               <div className="ms-2 mt-3">
-                <h6>Employment status</h6>
+                <h4><b>Employment status</b></h4>
               </div>
               <div className="ms-2 mt-3">
                 <h6>{showjob?.empt_stat}</h6>
               </div>
               <div className="ms-2 mt-3">
-                <h6>Worktype</h6>
+                <h4><b>Worktype</b></h4>
               </div>
               <div className="ms-2 mt-3">
                 <h6>{showjob?.worktype}</h6>
               </div>
               <div className="ms-2 mt-3">
-                <h6>Educational requirements</h6>
+                <h4><b>Educational requirements</b></h4>
               </div>
               <div className="ms-2 mt-3">
                 <h6>{showjob?.edu_req}</h6>
               </div>
               <div className="ms-2 mt-3">
-                <h6>Application deadline :</h6>
+                <h4><b>Application deadline</b></h4>
               </div>
               <div className="ms-2 mt-3">
                 <h6>{showjob?.app_deadline}</h6>
               </div>
               <div className="ms-2 mt-3">
-                <h6>Salary</h6>
+                <h4><b>Salary</b></h4>
               </div>
               <div className="ms-2 mt-3">
                 <h6>{showjob?.salary}</h6>
               </div>
               <div className="ms-2 mt-3">
-                <h6>Vacancy</h6>
+                <h4><b>Vacancy</b></h4>
               </div>
               <div className="ms-2 mt-3">
                 <h6>{showjob?.vacancy}</h6>

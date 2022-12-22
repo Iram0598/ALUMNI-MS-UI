@@ -82,10 +82,10 @@ export default function profile() {
                   </div>
                   <div>
                     <h5>{showprofile?.name}</h5>
-                    <h5>19103229</h5>
-                    <h5>BCSE</h5>
+                    <h5>{showprofile?.studentid}</h5>
+                    <h5>{showprofile?.program}</h5>
                     <h5>{showprofile?.gender}</h5>
-                    <h5>2019</h5>
+                    <h5>{showprofile?.admissionyear}</h5>
                     <h5>{showprofile.presentaddress}</h5>
                     <h5>{showprofile?.permanentaddress}</h5>
                   </div>

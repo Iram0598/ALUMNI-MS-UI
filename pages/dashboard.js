@@ -64,7 +64,7 @@ export default function Dashboard() {
     <div>
       <Container fluid>
         <Row className="min-vh-100 ">
-          <Col className="back  " sm={2}>
+          <Col className="back" sm={2}>
             <Sidebar />
           </Col>
           <Col sm={10}>

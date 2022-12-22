@@ -17,10 +17,10 @@ import {BsFillBriefcaseFill} from "react-icons/bs"
 
 export default function Sidebar() {
   const [profile, setProfile] = useState([]);
-  const fetchData = () => {
-    return fetch("http://localhost:5000/getProfiledata")
-      .then((res) => res.json())
-      .then((data) => {setProfile(data)});
+  const fetchData = async () => {
+    const res = await fetch("http://localhost:5000/getProfiledata");
+    const data = await res.json();
+    setProfile(data);
   };
 
   useEffect(() => {
@@ -98,7 +98,7 @@ export default function Sidebar() {
               
             </div>
           </div>
-          <div style={{ marginTop: "45vh" }} className="border-top">
+          <div style={{ marginTop: "38vh" }} className="border-top">
            {profile.map((item) => (
             <Dropdown className="ms-2 bg-dark dropup">
               <Dropdown.Toggle
