@@ -26,11 +26,15 @@ export default function index() {
           .then((data) => {setProfiles(data)});
       };
 
+      
+
       const eventData = () => {
         return fetch("http://localhost:5000/getEvent")
           .then((res) => res.json())
           .then((data) => setEvents(data));
       };
+
+    
     
       useEffect(() => {
         fetchData();
@@ -54,6 +58,7 @@ export default function index() {
               <div>
                 <Row className="g-4 ms-2 me-2 mb-3 mt-2">
                   {profiles.map((item) => (
+                    
                     <Col sm={4} key={item._id}>
                       <Card>
                         <Image
@@ -73,12 +78,13 @@ export default function index() {
                           <Link href="/">
                             <Button className="ms-2 me-2"  variant="dark">Decline</Button>
                           </Link>
-                          <Link href="/">
+                          <Link href="/requests">
                             <Button variant="dark">Approve</Button>
                           </Link>
                         </Card.Body>
                       </Card>
                     </Col>
+                    
                   ))}
                 </Row>
               </div>
